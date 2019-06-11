@@ -5,3 +5,36 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'rest-client'
+require 'pry'
+
+
+
+
+# user3 = User.create(username: "danny", password_digest: "kjhsdklfh", avatar: "monkey")
+# user1 = User.create(username: "mikey", password_digest: "kjhsdklfh", avatar: "duck")
+# user2 = User.create(username: "eddie", password_digest: "kjhsdklfh", avatar: "bird")
+#
+# show1 = Show.create(name: "this is a name of a show")
+# show2 = Show.create(name: "Gilligans Island")
+# show3 = Show.create(name: "Jerry Springer")
+#
+#
+# Potato.create(user: user1, show: show1, note: "this is a note left for the user")
+#
+#
+#
+# Bookmark.create(user: user3, show: show3)
+#
+# Comment.create(user: user2, show: show2, comment: "i'm a comment")
+# Comment.create(user: user3, show: show1, comment: "i'm a comment")
+
+# 
+#
+# https://api.adorable.io/avatars/285/cc
+# https://api.adorable.io/avatars/285/dann
+# https://api.adorable.io/avatars/285/jerry
+# https://api.adorable.io/avatars/285/edwin
+# https://api.adorable.io/avatars/285/dario
+# https://api.adorable.io/avatars/285/mike
