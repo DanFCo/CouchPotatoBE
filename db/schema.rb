@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_06_05_195456) do
     t.integer "user_id"
     t.integer "show_id"
     t.string "note", default: "Check out this Potato!"
+    t.integer "counter", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 2019_06_05_195456) do
     t.string "website", default: "none"
     t.integer "rating", default: 0
     t.string "network", default: "unknown"
+    t.string "webchannel", default: "none"
     t.string "thumbnail", default: "https://jaypeeonline.net/wp-content/uploads/2010/03/technical_difficulty.jpg"
     t.string "poster", default: "https://jaypeeonline.net/wp-content/uploads/2010/03/technical_difficulty.jpg"
     t.string "summary", default: "no summary available"

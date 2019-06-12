@@ -6,8 +6,45 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+
+
+
+
+
+
 require 'rest-client'
+require 'json'
 require 'pry'
+
+    url = "https://api.tvmaze.com/shows"
+
+    response = RestClient.get(url)
+    data = JSON.parse(response)
+
+
+      data.map do |x|
+
+      Show.create(
+
+
+        name: x["name"],
+        genre: x["genres"],
+        runtime: x["runtime"],
+        website: x["officialSite"],
+        # network: x["network"]["name"],
+        thumbnail: x["image"]["medium"],
+        poster: x["image"]["original"],
+        summary: x["summary"]
+      )
+
+
+  end
+
+
+
+
+
 
 
 
@@ -30,7 +67,7 @@ require 'pry'
 # Comment.create(user: user2, show: show2, comment: "i'm a comment")
 # Comment.create(user: user3, show: show1, comment: "i'm a comment")
 
-# 
+#
 #
 # https://api.adorable.io/avatars/285/cc
 # https://api.adorable.io/avatars/285/dann

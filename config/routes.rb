@@ -3,9 +3,12 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :potatos
       resources :comments
-      resources :bookmarks
       resources :shows
       resources :users
+      post "/comments/get", to: "comments#get"
+      post "/comments/new", to: "comments#new"
+      post "/bookmarks/get", to: "bookmarks#get"
+      post "/bookmarks/new", to: "bookmarks#new"
       post "/login", to: "auth#create"
       get "/profile", to: "users#profile"
     end
