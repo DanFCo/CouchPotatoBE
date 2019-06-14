@@ -1,7 +1,11 @@
 class CommentSerializer < ActiveModel::Serializer
-  attributes :id, :comment, :creator
+  attributes :id, :comment, :date_time
 
-  def creator
-    {username: self.object.user.username, avatar: self.object.user.avatar}
-  end
+belongs_to :user
+
+
+
+  # def creator
+  #   {username: self.object.user.username, avatar: self.object.user.avatar}
+  # end
 end

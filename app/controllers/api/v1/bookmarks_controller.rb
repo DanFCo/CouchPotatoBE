@@ -3,6 +3,14 @@ class Api::V1::BookmarksController < ApplicationController
 skip_before_action :authorized, only: [:index, :new, :get]
 
 
+
+
+def index
+  bookmarks = Bookmark.all
+render json: bookmarks
+end
+
+
 def get
  id = params[:id]
  user = User.find(id)

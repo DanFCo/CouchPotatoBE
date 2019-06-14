@@ -12,7 +12,7 @@ class Api::V1::CommentsController < ApplicationController
     user = params[:user]
     show = params[:show]
     newComment = params[:comment]
-    comment = Comment.create(user_id: user, show_id: show, comment: newComment)
+    comment = Comment.create(user_id: user, show_id: show, comment: newComment, date_time: Time.now)
     render json: comment
   end
 

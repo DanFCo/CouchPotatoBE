@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_06_05_195456) do
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "show_id"
+    t.string "date_time", default: "2019-06-13 11:35:28.606566"
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

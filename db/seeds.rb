@@ -21,27 +21,59 @@ require 'pry'
 
     response = RestClient.get(url)
     data = JSON.parse(response)
+    na = "not available"
+    img = "https://jaypeeonline.net/wp-content/uploads/2010/03/technical_difficulty.jpg"
 
+ data.map do |key|
+    name = key["name"]
+    genre = key["genres"].nil? ? na : key["genres"]
+    runtime = key["runtime"].nil? ? na : key["runtime"]
+    website = key["officialSite"].nil? ? na : key["officialSite"]
+    network = key["network"].nil? ? na : key["network"]["name"]
+    rating = key["rating"].nil? ? na : key["rating"]
+    webchannel = key["webChannel"].nil? ? na : key["webChannel"]["name"]
+    thumbnail = key["image"]["medium"].nil? ? img : key["image"]["medium"]
+    poster = key["image"]["original"].nil? ? img : key["image"]["original"]
+    summary = key["summary"].nil? ? na : key["summary"].gsub("</p>"," ").gsub("<p>"," ").gsub("</b>"," ").gsub("<b>"," ").gsub("<i>"," ").gsub("</i>"," ")
 
-      data.map do |x|
-
-      Show.create(
-
-
-        name: x["name"],
-        genre: x["genres"],
-        runtime: x["runtime"],
-        website: x["officialSite"],
-        # network: x["network"]["name"],
-        thumbnail: x["image"]["medium"],
-        poster: x["image"]["original"],
-        summary: x["summary"]
-      )
-
-
+Show.create(name: name,
+  genre: genre,
+  runtime: runtime,
+  website: website,
+  rating: rating,
+  network: network,
+  webchannel: webchannel,
+  thumbnail: thumbnail,
+  poster: poster,
+  summary: summary)
+puts "~ ~ Saved " + name
   end
 
 
+
+
+
+
+
+  #     data.map do |x|
+  #
+  #     Show.create(
+  #
+  #
+  #       name: x["name"],
+  #       genre: x["genres"],
+  #       runtime: x["runtime"],
+  #       website: x["officialSite"],
+  #       # network: ["network"]["name"],
+  #       thumbnail: x["image"]["medium"],
+  #       poster: x["image"]["original"],
+  #       summary: x["summary"]
+  #     )
+  #
+  #
+  # end
+
+# no network
 
 
 
