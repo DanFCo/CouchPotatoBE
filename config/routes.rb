@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :comments
       resources :shows
       resources :users
+      post "/potatoes/new", to:"potatos#new"
       get "/bookmarks", to: "bookmarks#index"
       post "/comments/get", to: "comments#get"
       post "/comments/new", to: "comments#new"

@@ -24,7 +24,7 @@ end
 
     if user.valid?
       token = encode_token(user_id: user.id)
-      render json: {user: user, jwt: token}, status: :created
+      render json: {user: UserSerializer.new(user), jwt: token}, status: :created
     else
       render json: {errors: "Username Is Already Taken, Please Try Again"}, status: :not_acceptable
     end
