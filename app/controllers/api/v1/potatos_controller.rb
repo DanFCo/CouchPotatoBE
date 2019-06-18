@@ -1,17 +1,43 @@
 class Api::V1::PotatosController < ApplicationController
 
-  skip_before_action :authorized, only: [:new, :index]
+  skip_before_action :authorized, only: [:new, :index, :update, :find_pots, :destroy]
 
 
-def index
-
-potatos = Potato.all
-
-render json: potatos
-
-end
 
 
+  def find_pots
+    userId = params[:user][:id]
+    potatos = Potato.find_by(user_id: userId)
+    potahtos = []
+    
+    if potatos
+
+      render json: potatos
+    else
+      render json: potahtos
+    end
+  end
+
+
+
+  def index
+    potatos = Potato.all
+
+    render json: potatos
+
+  end
+
+  def update
+    user = User.find_by(username: params[:user])
+    if !!user
+      potato = Potato.find(params[:id])
+      count = potato.counter + 1
+      potato.update(user_id: user.id,note: params[:note],counter: count)
+      render json: potato
+    else
+      render json: {errors: "There Is No User By That Name"}
+    end
+  end
 
 
   def new
@@ -27,6 +53,10 @@ end
     end
   end
 
-
+  def destroy
+    potato = Potato.find(params[:id])
+    potato.destroy
+    render json: {message: "Potato has been thrown away"}
+  end
 
 end#-----------------END OF CLASS----------------
