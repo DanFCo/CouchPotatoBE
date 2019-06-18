@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :shows
       resources :users
       resources :bookmarks
+      post "/shows/search", to: "shows#search"
       post "/potatos/find_pots", to: "potatos#find_pots"
       post "/potatoes/new", to:"potatos#new"
       get "/bookmarks", to: "bookmarks#index"
