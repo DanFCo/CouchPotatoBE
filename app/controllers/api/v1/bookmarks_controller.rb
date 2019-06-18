@@ -1,6 +1,6 @@
 class Api::V1::BookmarksController < ApplicationController
 
-skip_before_action :authorized, only: [:index, :new, :get]
+skip_before_action :authorized, only: [:index, :new, :get, :destroy]
 
 
 
@@ -36,6 +36,16 @@ end
   end
 
 
-
+def destroy
+  bookmark = Bookmark.find_by(user_id: params[:user], show_id: params[:show])
+  bookmark.destroy
+  render json: {message: "Show Has Been Removed From Your Watch List"}
 
 end
+
+
+
+
+
+
+end ##====================END OF CLASS============================

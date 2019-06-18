@@ -5,4 +5,5 @@ class ShowSerializer < ActiveModel::Serializer
   has_many :comments
 
 
+
 end

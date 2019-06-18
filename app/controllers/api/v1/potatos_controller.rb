@@ -7,24 +7,17 @@ class Api::V1::PotatosController < ApplicationController
 
   def find_pots
     userId = params[:user][:id]
-    potatos = Potato.find_by(user_id: userId)
-    potahtos = []
-    
-    if potatos
-
+    user = User.find(userId)
+    potatos = user.potatoes
       render json: potatos
-    else
-      render json: potahtos
-    end
   end
 
 
 
   def index
-    potatos = Potato.all
-
-    render json: potatos
-
+potatos = Potato.all
+potato = potatos.max_by{|pot| pot.counter}
+render json: potato
   end
 
   def update
