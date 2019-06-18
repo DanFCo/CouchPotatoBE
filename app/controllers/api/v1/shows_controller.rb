@@ -34,16 +34,17 @@ def search
      poster = key["show"]["image"].nil? ? img : key["show"]["image"]["original"]
      summary = key["show"]["summary"].nil? ? na : key["show"]["summary"].gsub("</p>"," ").gsub("<p>"," ").gsub("</b>"," ").gsub("<b>"," ").gsub("<i>"," ").gsub("</i>"," ")
 
-  Show.find_or_create_by(name: name,
-   genre: genre,
-   runtime: runtime,
-   website: website,
-   rating: rating,
-   network: network,
-   webchannel: webchannel,
-   thumbnail: thumbnail,
-   poster: poster,
-   summary: summary)
+  Show.find_or_create_by(name: name) do |show|
+   show.genre = genre
+   show.runtime = runtime
+   show.website = website
+   show.rating = rating
+   show.network = network
+   show.webchannel = webchannel
+   show.thumbnail = thumbnail
+   show.poster = poster
+   show.summary = summary
+ end
  end
 
 render json: created_shows
