@@ -1,6 +1,6 @@
 class Api::V1::BookmarksController < ApplicationController
 
-skip_before_action :authorized, only: [:index, :new, :get, :destroy]
+skip_before_action :authorized, only: [:index, :new, :get, :destroy, :most]
 
 
 
@@ -10,6 +10,15 @@ def index
 render json: bookmarks
 end
 
+
+
+def most
+
+show = Show.all.max_by{|show| show.bookmarks.length}
+
+render json: show
+
+end
 
 def get
  id = params[:id]
