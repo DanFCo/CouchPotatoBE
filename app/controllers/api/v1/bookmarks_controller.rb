@@ -46,7 +46,8 @@ end
 
 
 def destroy
-  bookmark = Bookmark.find_by(user_id: params[:user], show_id: params[:show])
+
+  bookmark = Bookmark.find(params[:show])
   bookmark.destroy
   render json: {message: "Show Has Been Removed From Your Watch List"}
 
