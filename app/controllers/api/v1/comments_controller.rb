@@ -21,7 +21,7 @@ class Api::V1::CommentsController < ApplicationController
     id = params[:id]
     show =Show.find(id)
     comments = show.comments
-
+    
     render json: comments
   end
 

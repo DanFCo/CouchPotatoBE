@@ -9,15 +9,15 @@ class Api::V1::PotatosController < ApplicationController
     userId = params[:user][:id]
     user = User.find(userId)
     potatos = user.potatoes
-      render json: potatos
+    render json: potatos
   end
 
-
+  
 
   def index
-potatos = Potato.all
-potato = potatos.max_by{|pot| pot.counter}
-render json: potato
+    potatos = Potato.all
+    potato = potatos.max_by{|pot| pot.counter}
+    render json: potato
   end
 
   def update

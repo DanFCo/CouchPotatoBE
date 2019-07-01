@@ -1,17 +1,17 @@
 class Api::V1::UsersController < ApplicationController
 
 
-skip_before_action :authorized, only: [:create, :index]
+  skip_before_action :authorized, only: [:create, :index]
 
 
 
 
-def index
-  users = User.all
-render json: users
-end
+  def index
+    users = User.all
+    render json: users
+  end
 
-
+  
 
 
   def profile
@@ -24,7 +24,7 @@ end
 
     if user.valid?
       token = encode_token(user_id: user.id)
-    
+
       render json: {user: UserSerializer.new(user), jwt: token}, status: :created
     else
       render json: {errors: "Username Is Already Taken, Please Try Again"}, status: :not_acceptable
@@ -38,12 +38,12 @@ end
 
 
 
-private
+  private
 
 
-def user_params
-  params.require(:user).permit(:username, :password, :avatar)
-end
+  def user_params
+    params.require(:user).permit(:username, :password, :avatar)
+  end
 
 
 end ###<<<---------------END OF CLASS--------------------------->>
