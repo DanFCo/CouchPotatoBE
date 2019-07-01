@@ -1,6 +1,6 @@
 class Api::V1::BookmarksController < ApplicationController
 
-skip_before_action :authorized, only: [:index, :new, :get, :destroy, :most]
+skip_before_action :authorized, only: [:index, :new, :get, :most, :destroy]
 
 
 

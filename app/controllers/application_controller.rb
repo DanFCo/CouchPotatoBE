@@ -5,7 +5,7 @@ class ApplicationController < ActionController::API
 
 
   def encode_token(payload)
-    
+
     JWT.encode(payload, "my_s3cr3t")
   end
 
@@ -19,8 +19,6 @@ class ApplicationController < ActionController::API
 
 
   def decoded_token
-
-
     if auth_header
        token = auth_header
       begin
@@ -32,7 +30,7 @@ class ApplicationController < ActionController::API
   end
 
   def current_user
-    puts "in current_user"
+
     if decoded_token
       user_id = decoded_token[0]["user_id"]
       user = User.find_by(id: user_id)
