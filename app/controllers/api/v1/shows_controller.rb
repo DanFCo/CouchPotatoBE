@@ -11,8 +11,6 @@ class Api::V1::ShowsController < ApplicationController
 
 
   def search
-
-    
     term = params[:search]
 
     url = "http://api.tvmaze.com/search/shows?q=#{term}"
